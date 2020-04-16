@@ -10,14 +10,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "expo-constants": "^9.0.0",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "react-native-camera": "^3.23.1",
+    "react-native-permissions": "^2.1.1",
+    "react-native-qrcode-scanner": "^1.4.0",
+    "react-native-swiper": "^1.6.0",
+    "react-native-vector-icons": "^6.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
+    "babel-plugin-root-import": "^6.5.0",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.58.0",
