@@ -10,8 +10,8 @@ import Focus from './Focus';
 import Menus from './Menus'
 
 import Test from '../../components/test'
-import { API_HOME } from '../../api';
-import { Screen } from '../../utils'
+import { API_HOME } from '@/api';
+import { Screen } from '@/utils'
 
 
 const { height, width } = Dimensions.get('window');
@@ -79,13 +79,12 @@ export default class Home extends Component {
         //     extrapolate:'clamp'
         // })
 
+  
+
         if (loading) {
             return <View style={styles.loading} >
                 <ActivityIndicator size="large" color="#00ff00" />
             </View>
-
-
-
         }
         console.log(menuData, "menuData ====")
 
@@ -167,9 +166,9 @@ const styles = StyleSheet.create({
 
     },
     loading: {
-        flex: 1,
-        height: Screen.heigth,
+        height: Screen.sHeight-60,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor:'#CCC'
     }
 });

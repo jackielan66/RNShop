@@ -6,8 +6,8 @@ import {
 } from 'react-native'
 
 import Swiper from 'react-native-swiper'
-import { Screen } from '../../utils'
-import { Colors, Dimens } from '../../../config'
+import { Screen } from '@/utils'
+import { Colors, Dimens } from '@/config'
 
 const { StatusBarManager } = NativeModules;
 const pixelRatio = PixelRatio.get()

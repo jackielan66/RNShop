@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native
 import Icon from 'react-native-vector-icons/Ionicons';
 import QRcodeScannerView from './QRcodeScannerView'
 import SearchBar from './SearchBar'
-import { Screen } from '../utils/index'
-import { Colors, Dimens } from '../../config'
+import { Screen } from '@/utils/index'
+import { Colors, Dimens } from '@/config'
 
 export default class SearchHeader extends Component {
     constructor(props) {

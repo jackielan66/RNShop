@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { api } from '../../config';
+import { api } from '@/config';
 
 
 // 创建 axios 实例

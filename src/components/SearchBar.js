@@ -1,8 +1,8 @@
 import React, { Component, PureComponent } from 'react';
 import { View, Text, StyleSheet, Animated, TouchableOpacity, Dimensions } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Colors, Dimens } from '../../config'
-import { Screen } from '../utils/index'
+import { Colors, Dimens } from '@/config'
+import { Screen } from '@/utils/index'
 
 
 export default class SearchBar extends PureComponent {
