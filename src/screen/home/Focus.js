@@ -63,7 +63,7 @@ export default class Focus extends PureComponent {
         //     outputRange:[0,80],
         //     extrapolate:'clamp'
         // })
-        console.log(data, "data ====")
+        // console.log(data, "data ====")
         let renderDom = null;
         if(data.length == 0){
             return null

@@ -25,16 +25,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import Home from './screen/home'
-
+import Navigator from './navigator'
+ 
 const App: () => React$Node = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Home />
-       
-      </SafeAreaView>
+     <Navigator />
     </>
   );
 };

@@ -18,7 +18,7 @@ const { height, width } = Dimensions.get('window');
 const { StatusBarManager } = NativeModules;
 const pixelRatio = PixelRatio.get()
 
-export default class Home extends Component {
+export default class GoodInex extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,13 +37,13 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        // Animated.timing(this.animateOpacity,
-        //     {
-        //         toValue: 1,                        // 透明度最终变为1，即完全不透明
-        //         duration: 10000,                   // 让动画持续一段时间
-        //     }
-        // ).start();
-        this.fetchFocus();
+
+        this.fetchCategory();
+    }
+
+    fetchCategory = async ()=>{
+        const res = await API_HOME.getCategory({ client_type: 'WAP' });
+        
     }
 
     fetchFocus = async () => {

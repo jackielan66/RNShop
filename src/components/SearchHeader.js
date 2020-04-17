@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import QRcodeScannerView from './QRcodeScannerView'
 import SearchBar from './SearchBar'
 import { Screen } from '@/utils/index'
-import { Colors, Dimens } from '@/config'
+import { Colors, Dimens } from '../config'
 
 export default class SearchHeader extends Component {
     constructor(props) {
@@ -36,30 +36,37 @@ export default class SearchHeader extends Component {
 
     render() {
         const { modal } = this.state;
-        const { opacity } = this.props;
+        const { opacity, offsetY } = this.props;
 
-        return <View style={styles.wrap} >
+        let wrapBackgroundColor = offsetY < 50 ? Colors.transparent : Colors.primary
+        let textColor = offsetY < 50 ? Colors.white : Colors.black
+        let textColorStyle = {
+            color: textColor
+        }
+
+        let _ionicStyle = { ...styles.icon, ...textColorStyle };
+        let _textStyle = { ...styles.icon_text, ...textColorStyle };
+
+        return <View style={[styles.wrap]} >
             <View style={styles.container} >
                 <View style={styles.leftArea} >
-                    <TouchableOpacity style={[styles.touchable]} onPress={this.onShowQr} activeOpacity={0.3} >
-                        <Icon name="ios-qr-scanner" style={[styles.icon]} />
-                        <Text style={[styles.icon_text]}>扫一扫</Text>
+                    <TouchableOpacity style={[styles.touchable]} onPress={this.onShowQr} >
+                        <Icon name="ios-qr-scanner" style={_ionicStyle} />
+                        <Text style={_textStyle}>扫一扫</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
                     <SearchBar />
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.touchable} activeOpacity={0.3} >
-                        <Icon name="ios-person" style={[styles.icon]} />
-                        <Text style={[styles.icon_text]} >我的</Text>
+                    <TouchableOpacity style={styles.touchable} >
+                        <Icon name="ios-person" style={_ionicStyle} />
+                        <Text style={_textStyle} >我的</Text>
                     </TouchableOpacity>
                 </View>
                 <QRcodeScannerView cancelModal={this.onCancel} visible={modal.visible} />
             </View>
         </View>
-
-
     }
 }
 
@@ -67,13 +74,13 @@ export default class SearchHeader extends Component {
 
 const styles = StyleSheet.create({
     wrap: {
-        // position: 'absolute',
+        position: 'absolute',
         top: 0,
         left: 0,
         width: Screen.width,
         height: 56,
-        zIndex: 99990,
-        backgroundColor: Colors.primary
+        zIndex: 99990
+        // backgroundColor:'trant'
     },
     container: {
         flexDirection: 'row',
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
     },
     icon_text: {
         fontSize: 10,
-        alignContent: 'center',
+        // alignContent: 'center',
     },
     touchable: {
         width: 40,
