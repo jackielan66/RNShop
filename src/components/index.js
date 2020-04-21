@@ -1,4 +1,4 @@
-// import DismissKeyboardHOC from './DismissKeyboardHOC';
+import DismissKeyboardHOC from './DismissKeyboardHOC';
 // import HeaderBack from './HeaderBack';
 // import QRcodeScannerView from './QRcodeScannerView';
 // import SearchBar from './SearchBar';
@@ -10,7 +10,7 @@ import SearchHeader from './SearchHeader';
 // import ShareActionSheet from './ShareActionSheet';
 
 export {
-    //   DismissKeyboardHOC,
+      DismissKeyboardHOC,
     //   HeaderBack,
     //   QRcodeScannerView,
     //   SearchBar,

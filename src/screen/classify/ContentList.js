@@ -64,7 +64,7 @@ export default class ContentList extends Component {
 
 
 const CONTENT_WIDTH = Screen.width - 100
-const SINGLE_ITEM_WIDTH = CONTENT_WIDTH / 4
+const SINGLE_ITEM_WIDTH = CONTENT_WIDTH / 3
 
 const styles = StyleSheet.create({
     container: {

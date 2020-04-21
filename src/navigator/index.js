@@ -8,6 +8,7 @@ import { navigationRef } from './RootNavigation';
 import TabBar from './TabBar';
 
 import GoodListPage from '@/screen/goodList'
+import { LoginScreen } from '../screen/auth'
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default class NavigationWrap extends Component {
 
                 } name="TABBAR" component={HomeTabs} />
                 <Stack.Screen name="GoodList" component={GoodListPage} />
+                <Stack.Screen name="Login" component={LoginScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     }

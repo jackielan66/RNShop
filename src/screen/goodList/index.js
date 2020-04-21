@@ -5,13 +5,12 @@ import {
     Alert, Dimensions, PixelRatio, StatusBar, NativeModules
 } from 'react-native'
 
-import { SearchHeader } from '../../components/index'
+import FilterBar from './FilterBar';
+import ContentList from './ContentList';
 
-
-import Test from '../../components/test'
 import { API_HOME } from '@/api';
 import { Screen } from '@/utils'
-
+import * as API_Goods from '../../api/good-api';
 
 const { height, width } = Dimensions.get('window');
 const { StatusBarManager } = NativeModules;
@@ -26,53 +25,39 @@ export default class GoodListPage extends Component {
             focusData: [],
             menuData: [],
             offsetY: 0,
-            loading: true
+            loading: true,
+            resData: {},
+            resList: []
         };
-        this.animateOpacity = new Animated.Value(1);
-        // this.animateOpacity.addListener(event => {
-        //     console.log(event,"valuevaluevalue")
-        //     // this.setState({offset: event.value});
-        //   });
     }
 
     componentDidMount() {
-
-        this.fetchCategory();
+        // console.log(this.props, "this,props")
+        this.fetch()
     }
 
-    fetchCategory = async ()=>{
-        const res = await API_HOME.getCategory({ client_type: 'WAP' });
-        
-    }
-
-    fetchFocus = async () => {
+    fetch = async () => {
+        const { params } = this.props.route;
         this.setState({
             loading: true
         })
-        const res = await API_HOME.getFocusPictures({ client_type: 'WAP' });
-        const menuData = await API_HOME.getSiteMenu();
-        // console.log(res, "resres")
+        let _params = {
+            page_no: 1,
+            cat: params.category_id,
+        }
+        const res = await API_Goods.getGoodsList(_params);
+        console.log(res, '=====')
         this.setState({
-            focusData: res,
-            menuData,
+            resData: res,
+            resList: res.data,
             loading: false
         })
-    }
-
-    _scrollY = (event) => {
-        // console.log(event, "event")
-        // console.log(event.nativeEvent, "event.nativeEvent")
-        let { contentOffset: { y } } = event.nativeEvent;
-        this.setState({
-            offsetY: y
-        })
-        // console.log(y, "yyyyy")
     }
 
 
     render() {
         const { animateOpacity } = this;
-        const { focusData, loading, menuData, offsetY } = this.state;
+        const { focusData, loading, resList, resData } = this.state;
         // console.log(this.animateOpacity, "animateOpacity")
         // Animated.timing(this.animateOpacity, {
         //     toValue: 1,
@@ -83,24 +68,21 @@ export default class GoodListPage extends Component {
         //     outputRange:[0,80],
         //     extrapolate:'clamp'
         // })
+        // console.log('')
+        // if (loading) {
+        //     return <View style={styles.loading} >
+        //         <ActivityIndicator size="large" color="#00ff00" />
+        //     </View>
+        // }
+        return <View  >
+            <FilterBar />
+            <ContentList data={resList} />
+        </View>
 
 
-
-        if (loading) {
-            return <View style={styles.loading} >
-                <ActivityIndicator size="large" color="#00ff00" />
-            </View>
-        }
         // console.log(menuData, "menuData ====")
 
-        return <View  >
-           
 
-                <Text>pixelRatio{pixelRatio}</Text>
-              
- 
-
-        </View>
     }
 }
 

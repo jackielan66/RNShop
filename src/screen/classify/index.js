@@ -70,7 +70,11 @@ export default class ClassifyPage extends Component {
         this.setState({
             current: item
         })
-        navigate('GoodList')
+        console.log(item, "itemitemitem")
+        let params = {
+            category_id: item.category_id
+        }
+        navigate('GoodList',params)
 
     }
 
@@ -78,7 +82,7 @@ export default class ClassifyPage extends Component {
     render() {
         const { animateOpacity } = this;
         const { focusData, loading, menuData, offsetY, resData, categories, current } = this.state;
-  
+
 
 
         if (loading) {
