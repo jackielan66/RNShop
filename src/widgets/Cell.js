@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { StyleSheet, TouchableHighlight, View } from 'react-native';
-import { colors } from '../../config';
+import { colors } from '@/config';
 import { Screen } from '../utils';
 import { BaseText, F16Text } from '../widgets/Text';
 import Icon from 'react-native-vector-icons/Ionicons';

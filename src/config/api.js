@@ -11,7 +11,7 @@
 // export const web_domain = 'https://m-buyer.javamall.com.cn';
 
 // 测试环境
-export const base = 'https://apitest.189jf.cn/base-api';
+export const base = 'https://apitest.189jf.cn';
 export const buyer = 'https://apitest.189jf.cn';
 export const web_domain = 'https://javashopm.natapp4.cc';
 

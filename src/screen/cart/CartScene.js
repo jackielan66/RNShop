@@ -358,6 +358,13 @@ class Cart extends Component {
     };
 
     render() {
+        return (
+            <View style={styles.container}>
+                <CartNotLogin />
+            </View>
+
+        )
+
         const { shopList, navigation, user } = this.props;
         const { activitySku, topRightText, editShow, loading } = this.state;
         let actionSheetOptions = [];
@@ -393,12 +400,7 @@ class Cart extends Component {
             );
         }
 
-        return (
-            <View style={styles.container}>
-                <CartNotLogin />
-            </View>
-
-        )
+    
         // return (
         //     <View style={styles.container}>
         //         <StatusBar barStyle="dark-content" />
@@ -452,7 +454,7 @@ class Cart extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        zIndex: -1,
+        // zIndex: -1,
     },
     separator: {},
     empty_icon_view: {

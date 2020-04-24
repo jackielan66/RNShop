@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { connect } from 'react-redux'
+import { userActions } from  '../redux/actions'
+import uuidv1 from 'uuid/v1';
+
 
 
 
@@ -16,7 +20,15 @@ function HomeTabs() {
     return TabBar
 }
 
-export default class NavigationWrap extends Component {
+class NavigationWrap extends Component {
+
+    constructor(props) {
+        super(props);
+        // 初始化uuid
+        if (!this.props.uuid) {
+            this.props.dispatch(userActions.setUUIDAction(uuidv1()));
+        }
+    }
 
     render() {
 
@@ -31,3 +43,11 @@ export default class NavigationWrap extends Component {
         </NavigationContainer>
     }
 }
+
+const select = state => {
+    return {
+        ...state.message,
+        uuid: state.user.uuid,
+    };
+};
+export default connect(select)(NavigationWrap);

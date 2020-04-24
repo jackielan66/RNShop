@@ -2,9 +2,9 @@
  * Created by Andste on 2018/10/15.
  */
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
-import {colors} from '../../config';
-import {Foundation} from '../utils';
+import { Text, StyleSheet } from 'react-native';
+import { colors } from '@/config';
+import { Foundation } from '../utils';
 
 export default function Price({
   advanced,
@@ -41,13 +41,13 @@ export default function Price({
   }
   return (
     <Text style={[styles.container, style]} {...props}>
-      <Text style={{fontSize: 12 * scale}}>￥</Text>
+      <Text style={{ fontSize: 12 * scale }}>￥</Text>
       <Text
-        style={{fontSize: integerFontSize * scale}}
+        style={{ fontSize: integerFontSize * scale }}
         allowFontScaling={false}>
         {Integer}
       </Text>
-      <Text style={{fontSize: 12 * scale}} allowFontScaling={false}>
+      <Text style={{ fontSize: 12 * scale }} allowFontScaling={false}>
         {Decimal}
       </Text>
     </Text>

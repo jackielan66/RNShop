@@ -2,7 +2,7 @@
  * Created by Andste on 2019-01-17.
  */
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Image, Text, TouchableOpacity, StyleSheet, Alert, Button } from 'react-native';
 import { Colors } from '../../config';
 import { navigate } from '@/navigator/RootNavigation';
 
@@ -14,12 +14,9 @@ export default function () {
                 source={require('../../images/icon-cry-face.png')}
             />
             <Text style={styles.title}>您还未登录，不能查看购物车</Text>
-            <TouchableOpacity>
-                <Text>test</Text>
-            </TouchableOpacity>
-            {/* <TouchableOpacity style={styles.btn}>
+            <TouchableOpacity style={styles.btn} onPress={() => navigate('Login')}  >
                 <Text style={styles.btn_text}>去登录</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
         </View>
     );
 }
@@ -28,7 +25,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         paddingTop: 100,
     },
     icon: {

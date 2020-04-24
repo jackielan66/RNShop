@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {colors} from '../../config';
+import {colors} from '@/config';
 import {Screen} from '../utils';
 
 export default function({

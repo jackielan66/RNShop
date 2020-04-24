@@ -9,6 +9,7 @@ import {
     View,
     TouchableOpacity,
     Text,
+    Image,
 } from 'react-native';
 import { store } from '../../redux/store';
 import { userActions } from '../../redux/actions';
@@ -19,7 +20,7 @@ import DismissKeyboardHOC from '../../components/DismissKeyboardHOC';
 import * as API_Passport from '../../api/passport-api';
 import * as API_Connect from '../../api/connect-api';
 
-// import LoginByNormal from './LoginByNormal';
+import LoginByNormal from './LoginByNormal';
 // import LoginByMobile from './LoginByMobile';
 // import LoginByConnect from './LoginByConnect';
 
@@ -120,6 +121,7 @@ export default class LoginScene extends Component {
      * @private
      */
     _loginSuccess = async res => {
+        console.log(`_loginSuccess`,res);
         await store.dispatch(userActions.loginSuccessAction(res));
         store.dispatch(userActions.getUserAction(this.nav.goBack));
         return false;
@@ -149,6 +151,11 @@ export default class LoginScene extends Component {
         return (
             <DismissKeyboardView style={styles.container}>
                 <StatusBar barStyle="dark-content" />
+                <Image 
+                style={{width:200,height:60,backgroundColor:'#ccc'}}
+                source={{uri:'https://apitest.189jf.cn/captchas/8d2789f0-85cd-11ea-ba34-45d6ad58fece/LOGIN?r=1587721518270'}}
+                />
+
                 {/*登录类型切换*/}
                 <View style={styles.type_nav}>
                     <TouchableOpacity
@@ -181,11 +188,12 @@ export default class LoginScene extends Component {
                     </TouchableOpacity>
                 </View>
                 {/*登录表单*/}
-                {/* {login_type === 'normal' ? (
+                {login_type === 'normal' ? (
                     <LoginByNormal onLogin={this._loginByNormal} />
                 ) : (
-                        <LoginByMobile onLogin={this._loginByMobile} />
-                    )} */}
+                        <LoginByNormal onLogin={this._loginByNormal} />
+                        // <LoginByMobile onLogin={this._loginByMobile} />
+                    )}
                 <View style={styles.login_other}>
                     <TouchableOpacity onPress={() => this.nav.navigate('Register')}>
                         <Text style={styles.login_other_text}>手机快速注册</Text>
@@ -195,10 +203,10 @@ export default class LoginScene extends Component {
                     </TouchableOpacity>
                 </View>
                 {/*第三方登录*/}
-                <LoginByConnect
+                {/* <LoginByConnect
                     loginByConnect={this._setLoginByConnect}
                     nav={this.nav}
-                />
+                /> */}
             </DismissKeyboardView>
         );
     }

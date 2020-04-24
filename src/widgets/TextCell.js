@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {colors} from '../../config';
+import {colors} from '@/config';
 
 export default function({text}) {
   return (

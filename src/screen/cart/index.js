@@ -11,12 +11,11 @@ export default class CartIndexPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-       
+
         };
     }
 
     render() {
-
         return <View  >
             <CartScene />
         </View>

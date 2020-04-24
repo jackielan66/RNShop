@@ -6,6 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Home from '@/screen/home'
 import ClassifyPage from '@/screen/classify'
 import CartIndexPage from '@/screen/cart'
+import MineScreen from '@/screen/mine'
+
 
 const Tab = createBottomTabNavigator();
 
@@ -33,12 +35,19 @@ export default <Tab.Navigator
             )
         }} />
     <Tab.Screen name="ShopCart"
-     options={{
+        options={{
             tabBarLabel: '购物车',
             tabBarIcon: ({ color, size }) => (
                 <Ionicons name="ios-cart" size={size} color={color} />
             )
         }}
         component={CartIndexPage} />
-    <Tab.Screen name="Mine" component={Home} />
+    <Tab.Screen name="Mine"
+        options={{
+            tabBarLabel: '我的',
+            tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-person" size={size} color={color} />
+            )
+        }}
+        component={MineScreen} />
 </Tab.Navigator>

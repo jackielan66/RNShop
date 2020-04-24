@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {colors} from '../../config';
+import {colors} from '@/config';
 
 export function BaseText({style, color, ...props}) {
   return <Text style={[styles.base, color && {color}, style]} {...props} />;

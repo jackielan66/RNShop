@@ -10,12 +10,12 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {colors} from '../../config';
-import {Screen} from '../utils';
+import { colors } from '@/config';
+import { Screen } from '../utils';
 
 const inputWidth = Screen.width - 40 - 63;
 
-export default function({
+export default function ({
   label,
   labelStyle,
   inputSytle,
@@ -29,7 +29,7 @@ export default function({
         <Text style={[styles.label, labelStyle]}>{label}</Text>
       </View>
       <View
-        style={[styles.input_view, validcodeUrl && {width: inputWidth - 95}]}>
+        style={[styles.input_view, validcodeUrl && { width: inputWidth - 95 }]}>
         <TextInput
           style={[styles.input, inputSytle]}
           ref={textInput => (this._textInput = textInput)}
@@ -47,11 +47,11 @@ export default function({
             onPressValidcodeImage();
             this._textInput.clear();
           }}>
-          <Image style={styles.validcode_image} source={{uri: validcodeUrl}} />
+          <Image style={styles.validcode_image} source={{ uri: validcodeUrl }} />
         </TouchableWithoutFeedback>
       ) : (
-        undefined
-      )}
+          undefined
+        )}
     </View>
   );
 }
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 48,
     borderColor: colors.cell_line_backgroud,
-    borderBottomWidth: Screen.onePixel * 2,
+    borderBottomWidth: 1///Screen.onePixel * 2,
   },
   label_view: {
     justifyContent: 'center',

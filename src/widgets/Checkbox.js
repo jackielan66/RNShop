@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
-import {colors} from '../../config';
+import {colors} from '@/config';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function({checked, label, style, labelStyle, ...props}) {

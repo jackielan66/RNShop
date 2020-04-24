@@ -15,8 +15,9 @@ import md5 from 'js-md5';
 export function login(username, password, captcha) {
     return request({
         url: 'passport/login',
-        METHOD: METHOD.POST,
+        method: METHOD.POST,
         params: {
+            scene: 'LOGIN',
             username,
             password: md5(password),
             captcha,
@@ -33,7 +34,7 @@ export function login(username, password, captcha) {
 export function loginByMobile(mobile, sms_code) {
     return request({
         url: `passport/login/${mobile}`,
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         params: { sms_code },
     });
 }
@@ -46,7 +47,7 @@ export function loginByMobile(mobile, sms_code) {
 export function sendRegisterSms(mobile, captcha) {
     return request({
         url: `passport/register/smscode/${mobile}`,
-        METHOD: METHOD.POST,
+        method: METHOD.POST,
         data: {
             captcha,
             uuid: store.getState().user.uuid,
@@ -62,7 +63,7 @@ export function sendRegisterSms(mobile, captcha) {
 export function sendLoginSms(mobile, captcha) {
     return request({
         url: `passport/login/smscode/${mobile}`,
-        METHOD: METHOD.POST,
+        method: METHOD.POST,
         data: {
             captcha,
             uuid: store.getState().user.uuid,
@@ -77,7 +78,7 @@ export function sendLoginSms(mobile, captcha) {
 export function checkUsernameRepeat(username) {
     return request({
         url: `passport/username/${username}`,
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         loading: false,
     });
 }
@@ -89,7 +90,7 @@ export function checkUsernameRepeat(username) {
 export function checkMobileRepeat(mobile) {
     return request({
         url: `passport/mobile/${mobile}`,
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         loading: false,
     });
 }
@@ -103,7 +104,7 @@ export function registerByMobile(params) {
     params.password = md5(params.password);
     return request({
         url: 'passport/register/wap',
-        METHOD: METHOD.POST,
+        method: METHOD.POST,
         data: params,
     });
 }
@@ -117,7 +118,7 @@ export function registerByMobile(params) {
 export function validMobileSms(mobile, scene, sms_code) {
     return request({
         url: `passport/smscode/${mobile}`,
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         params: {
             scene,
             sms_code,
@@ -133,7 +134,7 @@ export function validMobileSms(mobile, scene, sms_code) {
 export function validAccount(captcha, account) {
     return request({
         url: 'passport/find-pwd',
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         params: {
             uuid: store.getState().user.uuid,
             captcha,
@@ -150,7 +151,7 @@ export function validAccount(captcha, account) {
 export function sendFindPasswordSms(uuid, captcha) {
     return request({
         url: 'passport/find-pwd/send',
-        METHOD: METHOD.POST,
+        method: METHOD.POST,
         data: {
             uuid,
             captcha,
@@ -166,7 +167,7 @@ export function sendFindPasswordSms(uuid, captcha) {
 export function validFindPasswordSms(uuid, sms_code) {
     return request({
         url: 'passport/find-pwd/valid',
-        METHOD: METHOD.GET,
+        method: METHOD.GET,
         params: {
             uuid,
             sms_code,
@@ -185,7 +186,7 @@ export function changePassword(password, uuid) {
     }
     return request({
         url: 'passport/find-pwd/update-password',
-        METHOD: METHOD.PUT,
+        method: METHOD.PUT,
         data: {
             uuid,
             password: md5(password),
