@@ -12,9 +12,9 @@ export default class LoginByNormal extends PureComponent {
         super(props);
         this.state = {
             // 用户名
-            username: '',
+            username: 'food',
             // 密码
-            password: '',
+            password: '111111',
             // 图片验证码
             valid_code: '',
             // 图片验证码url

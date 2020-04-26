@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import Header from './_component/Header';
 import FaceBg from './_component/FaceBg';
-// import Menus from './Menus';
+import Menus from './_component/Menus';
 
 class MineScreen extends Component {
     // static navigationOptions = {
@@ -99,7 +99,7 @@ class MineScreen extends Component {
                         />
                     }>
                     <FaceBg user={user} />
-                    {/* <Menus user={user} /> */}
+                    <Menus user={user} />
                 </ScrollView>
             </View>
         );

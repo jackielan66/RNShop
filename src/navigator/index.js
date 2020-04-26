@@ -13,6 +13,8 @@ import TabBar from './TabBar';
 
 import GoodListPage from '@/screen/goodList'
 import { LoginScreen } from '../screen/auth'
+import { SettingPage } from '../screen/settings'
+import { MyAddress } from '../screen/miceScenes'
 
 const Stack = createStackNavigator();
 
@@ -39,6 +41,8 @@ class NavigationWrap extends Component {
                 } name="TABBAR" component={HomeTabs} />
                 <Stack.Screen name="GoodList" component={GoodListPage} />
                 <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Setting" component={SettingPage} />
+                <Stack.Screen name="MyAddress" component={MyAddress} />
             </Stack.Navigator>
         </NavigationContainer>
     }

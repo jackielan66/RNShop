@@ -20,6 +20,7 @@ import SkuSpec from './SkuSpec';
 import RepeatImage from './RepeatImage';
 import DashLine from './DashLine';
 import TextItem from './TextItem';
+import Card from './Card'
 
 export {
   BigButton,
@@ -40,4 +41,5 @@ export {
   TextItem,
   DashLine,
   RepeatImage,
+  Card,
 };

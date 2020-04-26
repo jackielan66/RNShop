@@ -62,7 +62,7 @@ export default class FaceBg extends PureComponent {
                                     等级积分：{user.grade_point || '请登录'}
                                 </Text>
                                 <Icon
-                                    name="ios-arrow-forward-outline"
+                                    name="ios-arrow-forward"
                                     color="#eeeeee"
                                     size={17}
                                 />
@@ -76,7 +76,7 @@ export default class FaceBg extends PureComponent {
                                     消费积分：{user.consum_point || '请登录'}
                                 </Text>
                                 <Icon
-                                    name="ios-arrow-forward-outline"
+                                    name="ios-arrow-forward"
                                     color="#eeeeee"
                                     size={17}
                                 />

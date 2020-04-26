@@ -8,4 +8,4 @@ import * as tokenActions from './token';
 import * as searchActions from './search';
 import * as cartActions from './cart';
 
-export {userActions, messageActions, tokenActions, searchActions, cartActions};
+export { userActions, messageActions, tokenActions, searchActions, cartActions };

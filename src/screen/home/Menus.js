@@ -33,7 +33,7 @@ export default class Menus extends PureComponent {
         const { data } = this.props;
         const { focusData } = this.state;
  
-        console.log(data, "data ==menuData==")
+        // console.log(data, "data ==menuData==")
         let renderDom = null;
         if (data.length == 0) {
             return null

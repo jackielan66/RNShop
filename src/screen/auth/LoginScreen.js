@@ -121,7 +121,7 @@ export default class LoginScene extends Component {
      * @private
      */
     _loginSuccess = async res => {
-        console.log(`_loginSuccess`,res);
+        // console.log(`_loginSuccess`,res);
         await store.dispatch(userActions.loginSuccessAction(res));
         store.dispatch(userActions.getUserAction(this.nav.goBack));
         return false;
@@ -151,10 +151,7 @@ export default class LoginScene extends Component {
         return (
             <DismissKeyboardView style={styles.container}>
                 <StatusBar barStyle="dark-content" />
-                <Image 
-                style={{width:200,height:60,backgroundColor:'#ccc'}}
-                source={{uri:'https://apitest.189jf.cn/captchas/8d2789f0-85cd-11ea-ba34-45d6ad58fece/LOGIN?r=1587721518270'}}
-                />
+            
 
                 {/*登录类型切换*/}
                 <View style={styles.type_nav}>

@@ -38,10 +38,13 @@ function initUser() {
 export function getUserAction(success, error) {
   return async dispatch => {
     try {
+      // console.log('catch  getUserAction   start');
       const user = await API_Members.getUserInfo();
+      // console.log('user succesd',user);
       await dispatch(getUserSuccess(user));
       typeof success === 'function' && success();
     } catch (e) {
+      // console.log('catch', e);
       await dispatch(initUserAction());
       typeof error === 'function' && error(e);
     }
@@ -66,6 +69,8 @@ function getUserSuccess(user) {
  * @returns {{type : string}}
  */
 export function loginSuccessAction(res) {
+  // 
+  // console.log(`登录成功`,res)
   return dispatch => {
     dispatch(setUIDAction(res.uid));
     dispatch(tokenActions.setAccessTokenAction(res.access_token));
