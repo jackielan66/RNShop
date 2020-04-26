@@ -118,7 +118,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  *
  * This should be set on project.ext.react and mirrored here.  If it is not set
  * on project.ext.react, JavaScript will not be compiled to Hermes Bytecode
- * and the benefits of using Hermes will therefore be sharply reduced.
+ * and the benefits of using Hermes will therefore be sharply reduced.multiDexEnabled
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
@@ -137,6 +137,7 @@ android {
         versionCode 1
         versionName "1.0"
         missingDimensionStrategy 'react-native-camera', 'general'
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -198,7 +199,9 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     implementation 'com.facebook.fresco:fresco:1.10.0'
-    
+
+    implementation 'com.android.support:multidex:1.0.3'
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
