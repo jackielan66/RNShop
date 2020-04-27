@@ -15,7 +15,8 @@ import TabBar from './TabBar';
 import GoodListPage from '@/screen/goodList'
 import { LoginScreen } from '../screen/auth'
 import { SettingPage } from '../screen/settings'
-import { MyAddress } from '../screen/miceScenes'
+import { MyAddress, MyOrder } from '../screen/miceScenes'
+
 import { HeaderBack } from '../components';
 
 const Stack = createStackNavigator();
@@ -26,7 +27,7 @@ function HomeTabs() {
 
 const headerCfg = {
     // headerMode: 'none',
-    // headerLeft: <HeaderBack />,
+    headerLeft: (props) => <HeaderBack {...props} />,
     // headerRight: <View />,
     // gestureResponseDistance: {
     //     horizontal: 60,
@@ -100,6 +101,8 @@ class NavigationWrap extends Component {
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="Setting" component={SettingPage} options={SettingPage.navigationOptions} />
                 <Stack.Screen name="MyAddress" component={MyAddress} />
+                <Stack.Screen name="MyOrder" component={MyOrder} options={MyOrder.navigationOptions} />
+
             </Stack.Navigator>
         </NavigationContainer>
     }

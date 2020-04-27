@@ -4,7 +4,7 @@ import HeaderBack from './HeaderBack';
 // import SearchBar from './SearchBar';
 import SearchHeader from './SearchHeader';
 // import ImageCodeModal from './ImageCodeModal';
-// import FlatList from './CustomFlatList';
+import FlatList from './CustomFlatList';
 // import CartBadge from './CartBadge';
 // import Modal from './Modal';
 // import ShareActionSheet from './ShareActionSheet';
@@ -16,7 +16,7 @@ export {
   //   SearchBar,
   SearchHeader,
   //   ImageCodeModal,
-  //   FlatList,
+    FlatList,
   //   CartBadge,
   //   Modal,
   //   ShareActionSheet,

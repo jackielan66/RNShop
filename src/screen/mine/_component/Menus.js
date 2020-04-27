@@ -6,7 +6,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { navigate } from '../../../navigator/RootNavigation';
 import { colors } from '../../../config';
 import { Screen } from '../../../utils';
-import { Cell, CellGroup,Card } from '../../../widgets';
+import { Cell, CellGroup, Card } from '../../../widgets';
 
 export default class Menus extends Component {
     constructor(props) {

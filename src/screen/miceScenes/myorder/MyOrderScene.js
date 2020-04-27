@@ -6,7 +6,7 @@ import { View, StatusBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from 'react-native-underline-tabbar';
 import { colors } from '../../../config';
-import { Screen } from '../../utils';
+import { Screen } from '../../../utils';
 
 import OrderFlatList from './MyOrderFlatList';
 
@@ -50,7 +50,8 @@ export default class MyOrderScene extends Component {
 
     render() {
         let initialPage = 0;
-        const { params = {} } = this.props.navigation.state;
+        console.log(this.props,"====== MyOrderScene")
+        const { params = {} } = this.props.route;
         if (params.status) {
             initialPage = this.state.tabs.findIndex(
                 item => item.status === params.status,
