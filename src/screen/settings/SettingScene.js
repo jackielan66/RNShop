@@ -19,8 +19,11 @@ import { Screen } from '../../utils';
 import * as API_Members from '../../api/members-api';
 
 class SettingScene extends Component {
-  
-    
+
+    static navigationOptions = {
+        // ...
+        title: '账户设置',
+    };
 
     _confirmLogout = () => {
         Alert.alert('提示', '确定要退出吗？', [

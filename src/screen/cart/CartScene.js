@@ -16,7 +16,7 @@ import {
 import { connect } from 'react-redux';
 import { cartActions, messageActions } from '../../redux/actions';
 // import { NavigationEvents } from 'react-navigation';
-// import { KeyboardAwareSectionList } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareSectionList } from 'react-native-keyboard-aware-scroll-view';
 // import { ActionSheetCustom as ActionSheet } from 'react-native-actionsheet';
 import { Colors } from '../../config';
 import { Screen } from '../../utils';
@@ -358,12 +358,7 @@ class Cart extends Component {
     };
 
     render() {
-        return (
-            <View style={styles.container}>
-                <CartNotLogin />
-            </View>
 
-        )
 
         const { shopList, navigation, user } = this.props;
         const { activitySku, topRightText, editShow, loading } = this.state;
@@ -400,54 +395,54 @@ class Cart extends Component {
             );
         }
 
-    
-        // return (
-        //     <View style={styles.container}>
-        //         <StatusBar barStyle="dark-content" />
-        //         <NavigationEvents onWillFocus={this._onWillFocus} />
-        //         <CartHeader
-        //             backEle={navigation ? <HeaderBack /> : null}
-        //             onEditPress={this._onEditPress}
-        //             topRightText={topRightText}
-        //             logined={!!this.props.user.user}
-        //         />
-        //         {user.user ? (
-        //             <KeyboardAwareSectionList
-        //                 keyboardOpeningTime={0}
-        //                 extraHeight={0}
-        //                 sections={shopList}
-        //                 renderItem={this._renderItem}
-        //                 ItemSeparatorComponent={this._ItemSeparatorComponent}
-        //                 renderSectionHeader={this._renderSectionHeader}
-        //                 ListEmptyComponent={this._ListEmptyComponent}
-        //             />
-        //         ) : (
-        //                 <CartNotLogin />
-        //             )}
-        //         {user.user ? (
-        //             <CartFooter
-        //                 root={!navigation}
-        //                 onCheckAll={this._onCheckAll}
-        //                 onDeleteGoods={this._deleteGoods}
-        //                 editShow={editShow}
-        //             />
-        //         ) : (
-        //                 undefined
-        //             )}
-        //         {actionSheetOptions.length ? (
-        //             <ActionSheet
-        //                 ref={o => (this.ActionSheet = o)}
-        //                 options={actionSheetOptions}
-        //                 cancelButtonIndex={0}
-        //                 destructiveButtonIndex={actionSheetOptions.length - 1}
-        //                 onPress={this._onActionSheetPress}
-        //             />
-        //         ) : (
-        //                 undefined
-        //             )}
-        //         <Loading show={loading} />
-        //     </View>
-        // );
+
+        return (
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" />
+                <NavigationEvents onWillFocus={this._onWillFocus} />
+                <CartHeader
+                    backEle={navigation ? <HeaderBack /> : null}
+                    onEditPress={this._onEditPress}
+                    topRightText={topRightText}
+                    logined={!!this.props.user.user}
+                />
+                {user.user ? (
+                    <KeyboardAwareSectionList
+                        keyboardOpeningTime={0}
+                        extraHeight={0}
+                        sections={shopList}
+                        renderItem={this._renderItem}
+                        ItemSeparatorComponent={this._ItemSeparatorComponent}
+                        renderSectionHeader={this._renderSectionHeader}
+                        ListEmptyComponent={this._ListEmptyComponent}
+                    />
+                ) : (
+                        <CartNotLogin />
+                    )}
+                {user.user ? (
+                    <CartFooter
+                        root={!navigation}
+                        onCheckAll={this._onCheckAll}
+                        onDeleteGoods={this._deleteGoods}
+                        editShow={editShow}
+                    />
+                ) : (
+                        undefined
+                    )}
+                {actionSheetOptions.length ? (
+                    <ActionSheet
+                        ref={o => (this.ActionSheet = o)}
+                        options={actionSheetOptions}
+                        cancelButtonIndex={0}
+                        destructiveButtonIndex={actionSheetOptions.length - 1}
+                        onPress={this._onActionSheetPress}
+                    />
+                ) : (
+                        undefined
+                    )}
+                <Loading show={loading} />
+            </View>
+        );
     }
 }
 

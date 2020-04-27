@@ -57,24 +57,28 @@ class AddressAddEditScene extends Component {
     }
 
     componentDidMount() {
-        // const addressSelector = NativeModules.AddressSelectorModule;
-        // this.addressSelector = addressSelector;
-        // const eventManager = new NativeEventEmitter(addressSelector);
-        // this.subscription = eventManager.addListener(
-        //     addressSelector.DataEvent,
-        //     async id => {
-        //         const res = await API_Common.getRegionsById(id);
-        //         addressSelector.setData(
-        //             res.map(item => {
-        //                 item.id = item.id;
-        //                 item.parentId = item.parent_id;
-        //                 item.name = item.local_name;
-        //                 item.type = item.region_grade;
-        //                 return item;
-        //             }),
-        //         );
-        //     },
-        // );
+        this.ToastExample =  NativeModules.ToastExample;
+
+        const addressSelector = NativeModules.AddressSelectorModule;
+        // console.log(addressSelector,"this.ToastExample")
+        this.addressSelector = addressSelector;
+        const eventManager = new NativeEventEmitter(addressSelector);
+        this.subscription = eventManager.addListener(
+            addressSelector.DataEvent,
+            async id => {
+                const res = await API_Common.getRegionsById(id);
+                // console.log(res,"res  addressSelector")
+                addressSelector.setData(
+                    res.map(item => {
+                        item.id = item.id;
+                        item.parentId = item.parent_id;
+                        item.name = item.local_name;
+                        item.type = item.region_grade;
+                        return item;
+                    }),
+                );
+            },
+        );
     }
 
     componentWillUnmount() {
@@ -88,6 +92,12 @@ class AddressAddEditScene extends Component {
     _selectAddress = () => {
         const { dispatch } = this.props;
         this.addressSelector.create(async (result1, result2, result3, result4) => {
+            console.log(result1,"result1")
+            console.log(result2,"result2")
+
+            console.log(result3,"result3")
+            console.log(result4,"result4")
+
             if (!result1 || !result2 || !result3) {
                 dispatch(messageActions.error('地区选择不完整，请重新选择！'));
                 return;
@@ -126,6 +136,8 @@ class AddressAddEditScene extends Component {
     };
 
     _save = async () => {
+        // this.ToastExample.show('hahhah',1000)
+        // return;
         let { name, mobile, addr, region } = this.state;
         let { dispatch, navigation } = this.props;
         if (!name) {

@@ -7,7 +7,7 @@ import Home from '@/screen/home'
 import ClassifyPage from '@/screen/classify'
 import CartIndexPage from '@/screen/cart'
 import MineScreen from '@/screen/mine'
-
+import { MyAddress } from '../screen/miceScenes'
 
 const Tab = createBottomTabNavigator();
 

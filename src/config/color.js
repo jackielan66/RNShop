@@ -8,7 +8,9 @@ export const transparent = 'transparent';
 
 export const F3F5F7 = '#F3F5F7';
 export const borderColor = '#ccc'
-
+export const navigator_background = '#FFFFFF';
+// 导航栏默认颜色
+export const navigator_tint_color = '#464B55';
 
 
 

@@ -1,5 +1,5 @@
 import DismissKeyboardHOC from './DismissKeyboardHOC';
-// import HeaderBack from './HeaderBack';
+import HeaderBack from './HeaderBack';
 // import QRcodeScannerView from './QRcodeScannerView';
 // import SearchBar from './SearchBar';
 import SearchHeader from './SearchHeader';
@@ -10,14 +10,14 @@ import SearchHeader from './SearchHeader';
 // import ShareActionSheet from './ShareActionSheet';
 
 export {
-      DismissKeyboardHOC,
-    //   HeaderBack,
-    //   QRcodeScannerView,
-    //   SearchBar,
-    SearchHeader,
-    //   ImageCodeModal,
-    //   FlatList,
-    //   CartBadge,
-    //   Modal,
-    //   ShareActionSheet,
+  DismissKeyboardHOC,
+  HeaderBack,
+  //   QRcodeScannerView,
+  //   SearchBar,
+  SearchHeader,
+  //   ImageCodeModal,
+  //   FlatList,
+  //   CartBadge,
+  //   Modal,
+  //   ShareActionSheet,
 };

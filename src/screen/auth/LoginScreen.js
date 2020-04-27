@@ -27,21 +27,21 @@ import LoginByNormal from './LoginByNormal';
 const DismissKeyboardView = DismissKeyboardHOC(View);
 
 export default class LoginScene extends Component {
-    static navigationOptions = ({ navigation }) => {
-        const _goBack = () => {
-            Keyboard.dismiss();
-            navigation.goBack();
-        };
-        return {
-            header_left: (
-                <TouchableOpacity style={styles.header_left} onPress={_goBack}>
-                    <Icon name="ios-close" style={styles.header_left_close} size={44} />
-                </TouchableOpacity>
-            ),
-            headerTitle: '账号登录',
-            gesturesEnabled: false,
-        };
-    };
+    // static navigationOptions = ({ navigation }) => {
+    //     const _goBack = () => {
+    //         Keyboard.dismiss();
+    //         navigation.goBack();
+    //     };
+    //     return {
+    //         header_left: (
+    //             <TouchableOpacity style={styles.header_left} onPress={_goBack}>
+    //                 <Icon name="ios-close" style={styles.header_left_close} size={44} />
+    //             </TouchableOpacity>
+    //         ),
+    //         headerTitle: '账号登录',
+    //         gesturesEnabled: false,
+    //     };
+    // };
 
     constructor(props) {
         super(props);
@@ -50,6 +50,10 @@ export default class LoginScene extends Component {
             // 登录类型 账号密码登录或者手机快捷登录
             login_type: 'normal',
         };
+        console.log(this.props,"====")
+        this.nav.setOptions({
+            title:'登录'
+        })
     }
 
     /**
@@ -121,7 +125,7 @@ export default class LoginScene extends Component {
      * @private
      */
     _loginSuccess = async res => {
-        // console.log(`_loginSuccess`,res);
+        console.log(`_loginSuccess   this.nav `,this.nav);
         await store.dispatch(userActions.loginSuccessAction(res));
         store.dispatch(userActions.getUserAction(this.nav.goBack));
         return false;

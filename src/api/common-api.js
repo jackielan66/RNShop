@@ -2,7 +2,7 @@
  * 公共API
  */
 import { store } from '../redux/store';
-import request, { METHOD } from '../utils/request';
+import { request, METHOD } from '../utils/request';
 import { api } from '../config';
 
 /**
