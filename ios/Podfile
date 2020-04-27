@@ -83,6 +83,8 @@ target 'rnshop' do
 
   pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+  pod 'react-native-addressselector', :path => '../node_modules/react-native-addressselector'
+
   target 'rnshopTests' do
     inherit! :complete
     # Pods for testing

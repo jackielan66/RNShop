@@ -1,4 +1,6 @@
 rootProject.name = 'rnshop'
+include ':react-native-addressselector'
+project(':react-native-addressselector').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-addressselector/android')
 include ':react-native-camera'
 project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera/android')
 include ':react-native-permissions'
