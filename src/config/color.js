@@ -11,7 +11,8 @@ export const borderColor = '#ccc'
 export const navigator_background = '#FFFFFF';
 // 导航栏默认颜色
 export const navigator_tint_color = '#464B55';
-
+// Cell分割线背景色
+export const cell_line_backgroud = '#DEDEDE';
 
 
 // ====

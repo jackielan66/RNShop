@@ -15,7 +15,8 @@ import TabBar from './TabBar';
 import GoodListPage from '@/screen/goodList'
 import { LoginScreen } from '../screen/auth'
 import { SettingPage } from '../screen/settings'
-import { MyAddress, MyOrder } from '../screen/miceScenes'
+import { MyAddress, MyOrder, MyPoint, MyCoupon } from '../screen/miceScenes'
+import { Cashier } from '../screen/checkout'
 
 import { HeaderBack } from '../components';
 
@@ -102,7 +103,10 @@ class NavigationWrap extends Component {
                 <Stack.Screen name="Setting" component={SettingPage} options={SettingPage.navigationOptions} />
                 <Stack.Screen name="MyAddress" component={MyAddress} />
                 <Stack.Screen name="MyOrder" component={MyOrder} options={MyOrder.navigationOptions} />
-
+                <Stack.Screen name="MyPoint" component={MyPoint} options={MyPoint.navigationOptions} />
+                <Stack.Screen name="MyCoupon" component={MyCoupon} options={MyCoupon.navigationOptions} />
+                <Stack.Screen name="Cashier" component={Cashier} options={Cashier.navigationOptions} />
+                
             </Stack.Navigator>
         </NavigationContainer>
     }
