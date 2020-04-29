@@ -72,7 +72,7 @@ class MineScreen extends Component {
         });
         let event = Animated.event([
             { nativeEvent: { contentOffset: { y: this.headerOpacity } } },
-        ]);
+        ],{ useNativeDriver: false });
         const { headerStyle, loading } = this.state;
         let { user } = this.props;
         return (

@@ -27,22 +27,17 @@ export default class Home extends Component {
             focusData: [],
             menuData: [],
             offsetY: 0,
-            loading: true
+            loading: true,
+            offset: 0
         };
         this.animateOpacity = new Animated.Value(1);
-        // this.animateOpacity.addListener(event => {
-        //     console.log(event,"valuevaluevalue")
-        //     // this.setState({offset: event.value});
-        //   });
+        this.animateOpacity.addListener(event => {
+            // console.log(event,"valuevaluevalue")
+            this.setState({ offset: event.value });
+        });
     }
 
     componentDidMount() {
-        // Animated.timing(this.animateOpacity,
-        //     {
-        //         toValue: 1,                        // 透明度最终变为1，即完全不透明
-        //         duration: 10000,                   // 让动画持续一段时间
-        //     }
-        // ).start();
         this.fetchFocus();
     }
 
@@ -72,19 +67,22 @@ export default class Home extends Component {
 
 
     render() {
-        const { animateOpacity } = this;
         const { focusData, loading, menuData, offsetY } = this.state;
-        // console.log(this.animateOpacity, "animateOpacity")
-        // Animated.timing(this.animateOpacity, {
-        //     toValue: 1,
-        //     duration: 2000
-        // }).start();
-        // this.animateOpacity.interpolate({
-        //     inputRange:[0,1],
-        //     outputRange:[0,80],
-        //     extrapolate:'clamp'
-        // })
+        this.animateOpacity.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0, 80],
+            extrapolate: 'clamp'
+        })
 
+        let animateEvent = Animated.event(
+            [{
+                nativeEvent: {
+                    contentOffset: {
+                        y: this.animateOpacity
+                    }
+                }
+            }],
+            { useNativeDriver: false })
 
 
         if (loading) {
@@ -95,10 +93,10 @@ export default class Home extends Component {
         // console.log(menuData, "menuData ====")
 
         return <View  >
-            <SearchHeader offsetY={offsetY} opacity={this.animateOpacity} />
+            <SearchHeader opacity={this.animateOpacity} />
             <ScrollView
                 scrollEventThrottle={100}
-                onScroll={this._scrollY}
+                onScroll={animateEvent}
             >
                 <Focus data={focusData} />
                 <Menus data={menuData} />

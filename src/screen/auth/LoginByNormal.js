@@ -96,6 +96,9 @@ export default class LoginByNormal extends PureComponent {
             disabled_btn,
             login_text,
         } = this.state;
+
+        // console.log('valid_code_url',valid_code_url)
+
         return (
             <View style={styles.container}>
                 <InputLabel

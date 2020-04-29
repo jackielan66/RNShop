@@ -47,7 +47,7 @@ export default class SearchHeader extends Component {
         let _ionicStyle = { ...styles.icon, ...textColorStyle };
         let _textStyle = { ...styles.icon_text, ...textColorStyle };
 
-        return <View style={[styles.wrap]} >
+        return <Animated.View style={[styles.wrap,{opacity:opacity}]} >
             <View style={styles.container} >
                 <View style={styles.leftArea} >
                     <TouchableOpacity style={[styles.touchable]} onPress={this.onShowQr} >
@@ -66,7 +66,7 @@ export default class SearchHeader extends Component {
                 </View>
                 <QRcodeScannerView cancelModal={this.onCancel} visible={modal.visible} />
             </View>
-        </View>
+        </Animated.View>
     }
 }
 

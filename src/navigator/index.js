@@ -15,7 +15,7 @@ import TabBar from './TabBar';
 import GoodListPage from '@/screen/goodList'
 import { LoginScreen } from '../screen/auth'
 import { SettingPage } from '../screen/settings'
-import { MyAddress, MyOrder, MyPoint, MyCoupon } from '../screen/miceScenes'
+import { MyAddress, MyOrder, MyPoint, MyCoupon, MyAfterSale, MyCollection } from '../screen/miceScenes'
 import { Cashier } from '../screen/checkout'
 
 import { HeaderBack } from '../components';
@@ -75,7 +75,7 @@ class NavigationWrap extends Component {
 
     static getDerivedStateFromProps(nextProps) {
         const { type, message } = nextProps;
-
+        // console.log(message,`getDerivedStateFromProps`)
         if (message === null || message === undefined) {
             return null;
         }
@@ -83,11 +83,11 @@ class NavigationWrap extends Component {
             Toast.hide(NavigationWrap.toast);
         }
         NavigationWrap.toast = Toast.show(message, {
-            type,
-            shadow: false,
+            // shadow: false,
             position: Toast.positions.CENTER,
-            duration: Toast.durations.SHORT
+            duration: Toast.durations.LONG
         });
+        // console.log(NavigationWrap.toast ,`NavigationWrap.toast `)
         return null
     }
 
@@ -106,6 +106,8 @@ class NavigationWrap extends Component {
                 <Stack.Screen name="MyPoint" component={MyPoint} options={MyPoint.navigationOptions} />
                 <Stack.Screen name="MyCoupon" component={MyCoupon} options={MyCoupon.navigationOptions} />
                 <Stack.Screen name="Cashier" component={Cashier} options={Cashier.navigationOptions} />
+                <Stack.Screen name="MyAfterSale" component={MyAfterSale} options={MyAfterSale.navigationOptions} />
+                <Stack.Screen name="MyCollection" component={MyCollection} options={MyCollection.navigationOptions} />
                 
             </Stack.Navigator>
         </NavigationContainer>

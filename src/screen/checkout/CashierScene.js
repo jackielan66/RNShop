@@ -21,7 +21,9 @@ import { HeaderBack } from '../../components';
 import { BigButton, Cell, Checkbox, Price, TextLabel } from '../../widgets';
 import * as API_Trade from '../../api/trade-api';
 import * as Wechat from 'react-native-wechat';
-import Alipay from '@0x5e/react-native-alipay';
+// import Alipay from '@0x5e/react-native-alipay';
+
+import Toast from 'react-native-root-toast';
 
 // 支付宝图标
 const alipay_icon = require('../../images/icon-alipay.png');
@@ -37,15 +39,16 @@ class CashierScene extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: '订单创建成功',
-            headerLeft: <HeaderBack onPress={() => navigation.goBack()} />,
+            // headerLeft: <HeaderBack onPress={() => navigation.goBack()} />,
             gesturesEnabled: false,
         };
     };
 
     constructor(props) {
         super(props);
-        const { trade_sn, order_sn, fromScene } = props.navigation.state.params;
-        this.trade_sn = trade_sn;
+        // console.log(props, "订单创建成功")
+        const { trade_sn, order_sn, fromScene } = props.route.params;
+        this.trade_sn = trade_sn || null;
         this.order_sn = order_sn || null;
         this.state = {
             fromScene,
@@ -75,6 +78,13 @@ class CashierScene extends Component {
             API_Trade.getCashierData(params),
             API_Trade.getPaymentList('REACT'),
         ]);
+        if (values[1].length == 0) {
+            values[1] = [
+                { "method_name": "微信支付", "plugin_id": "weixinPayPlugin" },
+                { "method_name": "支付宝", "plugin_id": "alipayDirectPlugin" },
+
+            ]
+        }
         this.setState({
             order: values[0],
             payment_list: values[1],
@@ -113,6 +123,17 @@ class CashierScene extends Component {
      * @private
      */
     _onInitiatePay = async () => {
+
+        // if (this.Toast) {
+        //     Toast.hide(this.Toast)
+        // }
+        // this.Toast = Toast.show(`FSFSAF`, {
+        //     duration: Toast.durations.LONG,
+        //     position: Toast.positions.CENTER, //显示位置还有BOTTOM,TOP
+
+        // });
+        // // console.log('long=====')
+        // return;
         const { trade_sn, order_sn } = this;
         const { dispatch } = this.props;
         const { payment_plugin_id } = this.state;
@@ -163,11 +184,11 @@ class CashierScene extends Component {
     _onAliPay = async signXml => {
         const { dispatch } = this.props;
         try {
-            Alipay.pay(signXml);
-            Alert.alert('提示', '支付成功了吗？切记不能重复支付！', [
-                { text: '重新支付' },
-                { text: '支付成功', onPress: this._paySuccess },
-            ]);
+            // Alipay.pay(signXml);
+            // Alert.alert('提示', '支付成功了吗？切记不能重复支付！', [
+            //     { text: '重新支付' },
+            //     { text: '支付成功', onPress: this._paySuccess },
+            // ]);
         } catch (e) {
             let errMsg = '支付失败';
             switch (e.code) {
@@ -331,7 +352,7 @@ class CashierScene extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     need_pay: {},
     checkbox: {

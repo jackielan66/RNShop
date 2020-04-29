@@ -50,7 +50,7 @@ export default class LoginScene extends Component {
             // 登录类型 账号密码登录或者手机快捷登录
             login_type: 'normal',
         };
-        console.log(this.props,"====")
+        // console.log(this.props,"====")
         this.nav.setOptions({
             title:'登录'
         })
