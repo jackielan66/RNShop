@@ -9,7 +9,7 @@ import { SearchHeader } from '../../components/index'
 import Focus from './Focus';
 import Menus from './Menus'
 
-import Test from '../../components/test'
+import AddressList from '../../components/Address/AddressList'
 import { API_HOME } from '@/api';
 import { Screen } from '@/utils'
 
@@ -28,13 +28,15 @@ export default class Home extends Component {
             menuData: [],
             offsetY: 0,
             loading: true,
-            offset: 0
+            offset: 0,
+            _show: false
         };
         this.animateOpacity = new Animated.Value(1);
         this.animateOpacity.addListener(event => {
             // console.log(event,"valuevaluevalue")
             this.setState({ offset: event.value });
         });
+
     }
 
     componentDidMount() {
@@ -105,58 +107,30 @@ export default class Home extends Component {
                 <Text>height{height}</Text>
                 <Text>width{width}</Text>
                 <Text>StatusBarManager.HEIGHT{StatusBarManager.HEIGHT}</Text>
-                <View />
+           
+                <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
+                <Text>width pixel{width * pixelRatio}</Text>
+
+              
+       
                 <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
                 <Text>width pixel{width * pixelRatio}</Text>
 
                 <Text>pixelRatio{pixelRatio}</Text>
                 <Button
-                    title="Left button"
-                    onPress={() => Alert.alert('Left button pressed')}
+                    title="显示地址"
+                    onPress={() => this.setState({ _show: true })}
                 />
                 <ActivityIndicator size="small" color="#00ff00" />
                 {/* <Test /> */}
+
                 <Text>height{height}</Text>
                 <Text>width{width}</Text>
                 <Text>StatusBarManager.HEIGHT{StatusBarManager.HEIGHT}</Text>
-                <View />
-                <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
-                <Text>width pixel{width * pixelRatio}</Text>
 
-                <Text>pixelRatio{pixelRatio}</Text>
-                <Button
-                    title="Left button"
-                    onPress={() => Alert.alert('Left button pressed')}
-                />
-                <ActivityIndicator size="small" color="#00ff00" />
-                {/* <Test /> */}
-                <Text>height{height}</Text>
-                <Text>width{width}</Text>
-                <Text>StatusBarManager.HEIGHT{StatusBarManager.HEIGHT}</Text>
-                <View />
-                <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
-                <Text>width pixel{width * pixelRatio}</Text>
 
-                <Text>pixelRatio{pixelRatio}</Text>
-                <Button
-                    title="Left button"
-                    onPress={() => Alert.alert('Left button pressed')}
-                />
                 <ActivityIndicator size="small" color="#00ff00" />
-                {/* <Test /> */}
-                <Text>height{height}</Text>
-                <Text>width{width}</Text>
-                <Text>StatusBarManager.HEIGHT{StatusBarManager.HEIGHT}</Text>
-                <View />
-                <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
-                <Text>width pixel{width * pixelRatio}</Text>
-
-                <Text>pixelRatio{pixelRatio}</Text>
-                <Button
-                    title="Left button"
-                    onPress={() => Alert.alert('Left button pressed')}
-                />
-                <ActivityIndicator size="small" color="#00ff00" />
+                <AddressList visible={this.state._show} cancelModal={() => this.setState({ _show: false })} />
             </ScrollView>
 
         </View>

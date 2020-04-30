@@ -5,6 +5,7 @@ import React, { PureComponent } from 'react';
 import { Keyboard, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { colors } from '../config';
 // import { withNavigation } from '@react-navigation';
+import { useNavigation } from '@react-navigation/native';
 
 class HeaderBack extends PureComponent {
     _onPress = () => {
@@ -32,7 +33,12 @@ class HeaderBack extends PureComponent {
     }
 }
 
-export default HeaderBack;
+export default function (props) {
+    const navigation = useNavigation();
+    return <HeaderBack {...props} navigation={navigation} />;
+}
+
+// export default HeaderBack;
 
 // export default withNavigation(HeaderBack);
 

@@ -17,6 +17,7 @@ import { LoginScreen } from '../screen/auth'
 import { SettingPage } from '../screen/settings'
 import { MyAddress, MyOrder, MyPoint, MyCoupon, MyAfterSale, MyCollection } from '../screen/miceScenes'
 import { Cashier } from '../screen/checkout'
+import Goods from '../screen/goods'
 
 import { HeaderBack } from '../components';
 
@@ -108,6 +109,7 @@ class NavigationWrap extends Component {
                 <Stack.Screen name="Cashier" component={Cashier} options={Cashier.navigationOptions} />
                 <Stack.Screen name="MyAfterSale" component={MyAfterSale} options={MyAfterSale.navigationOptions} />
                 <Stack.Screen name="MyCollection" component={MyCollection} options={MyCollection.navigationOptions} />
+                <Stack.Screen name="Goods" component={Goods} options={Goods.navigationOptions} />
                 
             </Stack.Navigator>
         </NavigationContainer>
