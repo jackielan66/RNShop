@@ -1,8 +1,8 @@
 import React, { Component, PureComponent } from 'react';
 import {
     View, Text, StyleSheet, ActivityIndicator, Button,
-    Animated, ScrollView, Image,TouchableOpacity,
-    Alert, Dimensions, PixelRatio, StatusBar, NativeModules
+    Animated, ScrollView, Image, TouchableOpacity,
+    Alert, Dimensions, PixelRatio, StatusBar, NativeModules, DeviceEventEmitter
 } from 'react-native'
 
 import Swiper from 'react-native-swiper'
@@ -24,12 +24,13 @@ export default class Menus extends PureComponent {
     }
 
     componentDidMount() {
-
+        
     }
 
     _onPress = item => {
         // console.log(item)
-        // return;
+        DeviceEventEmitter.emit('testlistername', { 'test': 1 })
+        return;
         const { url } = item;
         if (/\/points-mall/.test(url)) {
             // 积分商城

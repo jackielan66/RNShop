@@ -11,49 +11,20 @@ import {
     TouchableOpacity,
     StatusBar,
     StyleSheet,
-    Linking,
-    FlatList
+    Linking
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-modalbox';
-import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view'
-import * as API_Common from '../../api/common-api';
 
 import { F16Text } from '../../widgets/Text'
-import { ScrollView } from 'react-native-gesture-handler';
-
-const PROVINCE = 0,
-    CITY = 1,
-    AREA = 2,
-    TOWN = 3;
+import AddressListContainer from './AddressListContainer'
 
 export default class AddressList extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            resData: {},
-            resList: []
-        };
+        this.state = { visible: false };
     }
 
-    componentDidMount() {
-        this.fetch()
-    }
-
-    async fetch() {
-
-        const { type } = this.props;
-        let id = "";
-        if (type == "PROVINCE") {
-            id = 0
-        }
-        const res = await API_Common.getRegionsById(id);
-        // console.log(res, "res")
-        this.setState({
-            resList: res
-        })
-
-    }
 
     onSuccess = e => {
         Linking.openURL(e.data).catch(err =>
@@ -61,33 +32,28 @@ export default class AddressList extends PureComponent {
         );
     };
 
-    onChangeTab = (key) => {
-        console.log('onChangeTab', key)
+    _closeModal = () => {
+        this.props.cancelModal && this.props.cancelModal()
     }
-
-    _renderItem = (v) => {
-        return <View key={v.id} >
-            <Text>{v.local_name}</Text>
-        </View>
-    }
-
-    _keyExtractor = (item, index) => index.toString();
 
     render() {
         let { visible } = this.props;
-        const { resList } = this.state;
-
-
-
+        // console.log(visible, "visible")
         return (
-            <ScrollView>
-                <FlatList
-                    data={resList}
-                    keyExtractor={this._keyExtractor}
-                    renderItem={this._renderItem}
-                />
-            </ScrollView>
+            <Modal isOpen={visible} onClosed={() => this._closeModal()}
+                style={[styles.modal]} position={"bottom"} backdropPressToClose={true}
+            //  backdropContent={BContent}
+            >
+                <View style={[styles.header]} >
+                    <TouchableOpacity onPress={this._closeModal} >
+                        <F16Text>返回</F16Text>
+                    </TouchableOpacity>
+                    <F16Text>确认</F16Text>
+                </View>
 
+                <AddressListContainer />
+
+            </Modal>
         );
     }
 }

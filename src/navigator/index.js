@@ -110,7 +110,7 @@ class NavigationWrap extends Component {
                 <Stack.Screen name="MyAfterSale" component={MyAfterSale} options={MyAfterSale.navigationOptions} />
                 <Stack.Screen name="MyCollection" component={MyCollection} options={MyCollection.navigationOptions} />
                 <Stack.Screen name="Goods" component={Goods} options={Goods.navigationOptions} />
-                
+
             </Stack.Navigator>
         </NavigationContainer>
     }

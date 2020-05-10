@@ -11,29 +11,20 @@ import {
     TouchableOpacity,
     StatusBar,
     StyleSheet,
-    Linking,
-    FlatList
+    Linking
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-modalbox';
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view'
 import * as API_Common from '../../api/common-api';
+import AddressList from './AddressList'
 
 import { F16Text } from '../../widgets/Text'
-import { ScrollView } from 'react-native-gesture-handler';
 
-const PROVINCE = 0,
-    CITY = 1,
-    AREA = 2,
-    TOWN = 3;
-
-export default class AddressList extends PureComponent {
+export default class AddressListContainer extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            resData: {},
-            resList: []
-        };
+        this.state = { visible: false };
     }
 
     componentDidMount() {
@@ -41,18 +32,8 @@ export default class AddressList extends PureComponent {
     }
 
     async fetch() {
-
-        const { type } = this.props;
-        let id = "";
-        if (type == "PROVINCE") {
-            id = 0
-        }
-        const res = await API_Common.getRegionsById(id);
-        // console.log(res, "res")
-        this.setState({
-            resList: res
-        })
-
+        const res = await API_Common.getRegionsById();
+        console.log(res, "res")
     }
 
     onSuccess = e => {
@@ -65,28 +46,20 @@ export default class AddressList extends PureComponent {
         console.log('onChangeTab', key)
     }
 
-    _renderItem = (v) => {
-        return <View key={v.id} >
-            <Text>{v.local_name}</Text>
-        </View>
-    }
-
-    _keyExtractor = (item, index) => index.toString();
-
     render() {
         let { visible } = this.props;
-        const { resList } = this.state;
-
-
 
         return (
-            <ScrollView>
-                <FlatList
-                    data={resList}
-                    keyExtractor={this._keyExtractor}
-                    renderItem={this._renderItem}
-                />
-            </ScrollView>
+
+
+            <ScrollableTabView renderTabBar={() => <ScrollableTabBar />} >
+                <AddressList tabLabel="React" type="PROVINCE"/>
+                {/* <View tabLabel="Vue"><AddressList type="CITY"/></View>
+                <View tabLabel="node"><AddressList /></View> */}
+            </ScrollableTabView>
+
+
+
 
         );
     }

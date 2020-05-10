@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {
     View, Text, StyleSheet, ActivityIndicator, Button,
     Animated, ScrollView,
-    Alert, Dimensions, PixelRatio, StatusBar, NativeModules
+    Alert, Dimensions, PixelRatio, StatusBar, NativeModules, DeviceEventEmitter
 } from 'react-native'
 
 import { SearchHeader } from '../../components/index'
 import Focus from './Focus';
 import Menus from './Menus'
 
-import AddressList from '../../components/Address/AddressList'
+import Address from '../../components/Address/'
 import { API_HOME } from '@/api';
 import { Screen } from '@/utils'
 
@@ -29,7 +29,7 @@ export default class Home extends Component {
             offsetY: 0,
             loading: true,
             offset: 0,
-            _show: false
+            _show: true
         };
         this.animateOpacity = new Animated.Value(1);
         this.animateOpacity.addListener(event => {
@@ -41,6 +41,9 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.fetchFocus();
+        DeviceEventEmitter.addListener("testlistername",function(){
+            console.log('夸页面调用')
+        })
     }
 
     fetchFocus = async () => {
@@ -107,20 +110,20 @@ export default class Home extends Component {
                 <Text>height{height}</Text>
                 <Text>width{width}</Text>
                 <Text>StatusBarManager.HEIGHT{StatusBarManager.HEIGHT}</Text>
-           
+
                 <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
                 <Text>width pixel{width * pixelRatio}</Text>
 
-              
-       
+
+
                 <Text>height pixel{height * pixelRatio + StatusBarManager.HEIGHT * pixelRatio}</Text>
                 <Text>width pixel{width * pixelRatio}</Text>
 
                 <Text>pixelRatio{pixelRatio}</Text>
-                <Button
+                {/* <Button
                     title="显示地址"
                     onPress={() => this.setState({ _show: true })}
-                />
+                /> */}
                 <ActivityIndicator size="small" color="#00ff00" />
                 {/* <Test /> */}
 
@@ -130,7 +133,7 @@ export default class Home extends Component {
 
 
                 <ActivityIndicator size="small" color="#00ff00" />
-                <AddressList visible={this.state._show} cancelModal={() => this.setState({ _show: false })} />
+                {/* <Address visible={this.state._show} cancelModal={() => this.setState({ _show: false })} /> */}
             </ScrollView>
 
         </View>

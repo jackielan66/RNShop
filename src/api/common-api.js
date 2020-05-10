@@ -49,7 +49,7 @@ export function recordViews(url) {
  * 获取地区数据
  * @param id
  */
-export function getRegionsById(id) {
+export function getRegionsById(id=0) {
     return request({
         url: `${api.base}/regions/${id}/children`,
         method: METHOD.GET,
